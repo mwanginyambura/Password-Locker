@@ -1,5 +1,6 @@
 #!/usr/bin/env python3.6
 import random
+import pyperclip
 from user import User
 from credentials import Credential
 
@@ -65,7 +66,7 @@ def main():
 
             save_user_account(create_user_account(first_name, last_name, phone_number, email, password))
 
-            print("\n")
+            print("\nEnter your name")
             print(f"New Account **{user_name}** created.\n")
 
         elif short_code == "cc":
