@@ -1,20 +1,21 @@
 #!/usr/bin/env python3.6
-import random       
-from user import User
+import random
+import pyperclip
+# from user import User
 from credentials import Credential
 
 def create_user_account(first_name, last_name, phone_number, email, password):
     """
     Function to create a new account
     """
-    new_user = User(first_name, last_name, phone_number, email, password)
+    new_user = User(first_name, last_name)
     return new_user
 
 def create_credentials(view_password,account,login_name,pass_word):
     """
     Function to create a new credential
     """
-    new_credential = Credential(view_password,account,login_name,pass_word)
+    # new_credential = Credential(view_password,account,login_name,pass_word)
     return new_credential
 
 def save_user_account(user):
@@ -29,11 +30,11 @@ def save_credentials(credential):
     """
     credential.save_credential()
 
-def check_existing_users(characters):
+def check_existing_users(first_name):
     """
-    Function that checks if a user exists with those characters and retuen a boolean
+    Function that checks if a user exists with those characters and return a boolean
     """
-    return User.user_exists(characters)
+    return User.user_exists(first_name)
 
 def display_credentials():
      """
@@ -42,9 +43,9 @@ def display_credentials():
      return Credential.display_credentials()
 def main():
     print("Hello! Welcome to the Password Locker. please enter your name")
-    u_name = input()
+    user_name = input()
     print("\n")
-    print(f"Hello {u_name}.")
+    print(f"Hello {user_name}.")
     while True:
         print("\nplease Use the short codes below for selection:")
         print("." * 40)
@@ -55,15 +56,19 @@ def main():
             print("\nNew account")
             print("." * 14)
 
-            print("\nEnter your user name")
+            print("\nEnter your first name")
             print("."*40)
+            user_name = input()
+
+            print("\nEnter your last name")
+            print("." *40)
             user_name = input()
 
             print("\nEnter a password")
             print("."*40)
             pass_word = input()
 
-            save_user_account(create_user_account(first_name, last_name, phone_number, email, password))
+            save_users(create_user_account(first_name , last_name))
 
             print("\n")
             print(f"New Account **{user_name}** created.\n")
@@ -118,7 +123,7 @@ def main():
                 password_input = input()
                 if check_existing_users(user_password_input):
                     print("\nWelcome back!")
-                else: 
+                else:
                     print("You don't have an account.\n")
 
         elif short_code == 'dc':
@@ -142,4 +147,5 @@ def main():
 
 
 if __name__ == '__main__':
-   main()
+
+    main()

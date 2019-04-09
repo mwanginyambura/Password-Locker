@@ -10,14 +10,14 @@ class TestUser(unittest.TestCase):
        """
        set up method to run before each test cases
        """
-       self.new_user = User("meg","say123")
+       self.new_user = User("meg","123")
 
    def test_init(self):
        """
        test_init test case to test if the object is initialized properly
        """
        self.assertEqual(self.new_user.username,"meg")
-       self.assertEqual(self.new_user.password,"say123")
+       self.assertEqual(self.new_user.password,"123")
 
    def test_save_user(self):
        """
@@ -31,9 +31,9 @@ class TestUser(unittest.TestCase):
        test_user_exists test case to check if we can return a boolean if we cannot find the user
        """
        self.new_user.save_user()
-       test_user = User("User","12345")
+       test_user = User("User","123")
        test_user.save_user()
-       user_exists = User.user_exists("12345")
+       user_exists = User.user_exists("123")
        self.assertTrue(user_exists)
 
 if __name__ == '__main__':
